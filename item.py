@@ -32,18 +32,4 @@ class Item:
       print(item)
 
   def __repr__(self) -> str:
-    return f"Item({self.name}, {self.price}, {self.quantity})"
-
-
-Item.instantiate_from_csv()
-
-# item1 = Item('iPhone', 1000, 1)
-# item2 = Item('laptop', 10000, 4)
-# item3 = Item('camera', 500, 6)
-# item4 = Item('iwatch', 300, 8)
-# item5 = Item('pendrive', 100, 11)
-
-# print(Item.all)
-
-# for item in Item.all:
-#   print(item.name)
+    return f"{self.__class__.__name__}({self.name}, {self.price}, {self.quantity})"
