@@ -1,3 +1,5 @@
+import csv
+
 class Item:
   pay_rate = 0.8 # The pay rate after 20% discount
   all = []
@@ -12,7 +14,7 @@ class Item:
 
     # actions ti execution
     Item.all.append(self)
-  
+
 
   def calculate_total_price(self):
     return self.price * self.quantity
@@ -20,24 +22,28 @@ class Item:
   def apply_discount(self):
     self.price = self.price * self.pay_rate
 
+  @classmethod
+  def instantiate_from_csv(cls):
+    with open('items.csv', 'r') as f:
+      reader = csv.DictReader(f)
+      items = list(reader)
 
-# Create an object from class
-# item1 = Item('iPhone', 100, 1)
-# item1.apply_discount()
-# print(item1.price)
+    for item in items:
+      print(item)
 
-# item2 = Item('Mac', 1000, 3)
-# item2.price = 0.7
-# item2.apply_discount()
-# print(item2.price)
+  def __repr__(self) -> str:
+    return f"Item({self.name}, {self.price}, {self.quantity})"
 
-item1 = Item('iPhone', 1000, 1)
-item2 = Item('laptop', 10000, 4)
-item3 = Item('camera', 500, 6)
-item4 = Item('iwatch', 300, 8)
-item5 = Item('pendrive', 100, 11)
 
-print(Item.all)
+Item.instantiate_from_csv()
 
-for item in Item.all:
-  print(item.name)
+# item1 = Item('iPhone', 1000, 1)
+# item2 = Item('laptop', 10000, 4)
+# item3 = Item('camera', 500, 6)
+# item4 = Item('iwatch', 300, 8)
+# item5 = Item('pendrive', 100, 11)
+
+# print(Item.all)
+
+# for item in Item.all:
+#   print(item.name)
