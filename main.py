@@ -1,7 +1,12 @@
 from item import Item
-from phone import Phone
 
-Item.instantiate_from_csv()
+item1 = Item("MyItem", 780)
 
-print(Item.all)
-print(Phone.all)
+# Setting an Attribute
+item1.name = "OtherItem"
+
+
+# Item.instantiate_from_csv()
+
+# Getting an Attribute
+print(item1.name)
